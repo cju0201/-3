@@ -326,13 +326,16 @@ initFortuneQueue();
 initFortuneHistory();
 preloadPromise = preloadUniverseAssets();
 
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        bgMusic.pause();
-    } else {
-        bgMusic.play().catch(() => {});
-    }
-});
+function stopMusic() {
+    if (!bgMusic) return;
+
+    bgMusic.pause();
+    bgMusic.currentTime = 0;   // 可選，直接回到開頭
+}
+
+document.addEventListener("visibilitychange", stopMusic);
+window.addEventListener("pagehide", stopMusic);
+window.addEventListener("blur", stopMusic);
 
 // 點擊開始
 if (startBtn) {
