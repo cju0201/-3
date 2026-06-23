@@ -82,16 +82,16 @@ const btsUniverseFortunes = [
     },
     { song: "Dynamite", message: "今天充滿著無限的歡樂與正能量，像夜空中的璀璨煙火一樣，盡情釋放你的熱情並點燃黑夜吧！", lyrics: "Shining through the city with a little funk and soul", cover: "./assets/covers/be.png", spotify: "https://open.spotify.com/track/5QDLhrAOJJdNAmCTJ8xMyW?si=4a722fc3cb9d442c", apple: "https://music.apple.com/tw/song/dynamite/1596532400" },
     { song: "Butter", message: "像絲滑的奶油一樣融化生活中的所有小煩惱，今天不論做什麼事情，你都能無比流暢、順心無阻！", lyrics: "Smooth like butter, like a criminal undercover", cover: "./assets/covers/butter.png", spotify: "https://open.spotify.com/track/1mWdTewIgB3gtBM3TOSFhB?si=eb1d9777a16a4447", apple: "https://music.apple.com/tw/song/butter/1598660389" },
-    { song: "Permission to Dance", message: "不需要任何人的允許，也不需要去管 those 繁瑣的限制。今天就聽從你內心的節奏，快樂地起舞吧！", lyrics: "Ain't nothing that can stop how we move, yeah", cover: "./assets/covers/ptd.png", spotify: "https://open.spotify.com/track/43Y0lr2rcWirZysfT26JY5?si=b81af195c87c41af", apple: "https://music.apple.com/tw/song/permission-to-dance/1598661441" },
+    { song: "Permission to Dance", message: "不需要任何人的允許，也不需要去管繁瑣的限制。今天就聽從你內心的節奏，快樂地起舞吧！", lyrics: "Ain't nothing that can stop how we move, yeah", cover: "./assets/covers/ptd.png", spotify: "https://open.spotify.com/track/3XYRV7ZSHqIRDG87DKTtry?si=040489015129469a", apple: "https://music.apple.com/tw/song/permission-to-dance/1598661441" },
     { song: "ON", message: "讓大風大浪和考驗迎面而來吧！你體內蘊藏的力量早已做好準備，所有的痛苦都只會化為重生的羽翼。", lyrics: "Bring the pain, oh carry on", cover: "./assets/covers/7.png", spotify: "https://open.spotify.com/track/0fZRNhPJ4AGmwY7rkpdbqK?si=544e726aab154014", apple: "https://music.apple.com/tw/song/on/1599362870" },
-    { song: "Run BTS", message: "雙腿就是最強大的燃料，無須向任何人報備或等待批准。高效率行動起來，朝著夢想全力奔跑！", lyrics: "Run bulletproof run, yeah you gotta run", cover: "./assets/covers/proof.png", spotify: "https://open.spotify.com/track/69xohKu8C1fsflYAiSNbwM?si=526a470ac3d54c4a", apple: "https://music.apple.com/tw/song/run-bts/1627575780" },
+    { song: "Run BTS", message: "不需要猶豫，相信雙腳走過的每一步。帶著最初的信念，朝著夢想全力奔跑吧！", lyrics: "Run bulletproof run, yeah you gotta run", cover: "./assets/covers/proof.png", spotify: "https://open.spotify.com/track/69xohKu8C1fsflYAiSNbwM?si=526a470ac3d54c4a", apple: "https://music.apple.com/tw/song/run-bts/1627575780" },
     { song: "Fire", message: "隨心所欲地去生活吧！反正這是專屬於你的人生。今天偶爾放鬆、偷懶，哪怕輸了也完全沒有關係！", lyrics: "隨便怎麼活都行，反正是你自己的", cover: "./assets/covers/yf.png", spotify: "https://open.spotify.com/track/0aE3V0zgSD2YwkEHW42gxG?si=491b98b268c5463f", apple: "https://music.apple.com/tw/song/burning-up-fire/1598662129" },
     { song: "IDOL", message: "無論世界怎麼評價你，無論你在別人眼裡是好是壞。深深愛著此時此刻正在咬牙努力、無比真實的自己。", lyrics: "You can't stop me loving myself", cover: "./assets/covers/answer.png", spotify: "https://open.spotify.com/track/1e8J3XClxZbFmvIHLI8CE4?si=659d30c31dd647d0", apple: "https://music.apple.com/tw/song/idol/1598730980" },
-    { song: "Boy With Luv", message: "高調的成就或許很炫目，但真正的幸福往往藏在日常微小的事情中。你的每一步都踩著充滿愛的旋律。", lyrics: "Love is nothing stronger", cover: "./assets/covers/persona.png", spotify: "https://open.spotify.com/track/4a9tbd947vo9K8Vti9JwcI?si=bb23427e6b904364", apple: "https://music.apple.com/tw/song/boy-with-luv-feat-halsey/1599172208" },
+    { song: "Boy With Luv", message: "高調的成就也許很炫目，但真正的幸福往往藏在日常微小的事情中。你的每一步都踩著充滿愛的旋律。", lyrics: "Love is nothing stronger", cover: "./assets/covers/persona.png", spotify: "https://open.spotify.com/track/4a9tbd947vo9K8Vti9JwcI?si=bb23427e6b904364", apple: "https://music.apple.com/tw/song/boy-with-luv-feat-halsey/1599172208" },
     { song: "Fake Love", message: "勇敢脫掉那些讓你不快樂的偽裝與迎合。擁抱真實的自己，去追尋能真正照亮你靈魂的純粹之愛。", lyrics: "I'm so sick of this fake love", cover: "./assets/covers/tear.png", spotify: "https://open.spotify.com/track/6m1TWFMeon7ai9XLOzdbiR?si=22beec9a52b845b7", apple: "https://music.apple.com/tw/song/fake-love/1598660938" },
     { song: "Blood Sweat & Tears", message: "毫無保留地釋放你的狂熱與靈魂吧！沉浸在自己真正熱愛的事情中，那專注的模樣正在散發極致的光彩。", lyrics: "我最後的舞步，全都帶走吧", cover: "./assets/covers/wings.png", spotify: "https://open.spotify.com/track/2u54HNQamwFuOMLSuhSRom?si=4bc9dd396c8440d5", apple: "https://music.apple.com/tw/song/blood-sweat-tears/1596532481" },
     { song: "DNA", message: "今天遇到的所有巧合與好運都不是偶然。這一切都是刻在宇宙基因與宿命軌道裡的必然緣分。", lyrics: "我們是找到彼此命運的兩個人", cover: "./assets/covers/her.png", spotify: "https://open.spotify.com/track/3uRLwBjI2TahxslcMTvpFs?si=1211bf95c1e54eb5", apple: "https://music.apple.com/tw/song/dna/1596529066" },
-    { song: "Not Today", message: "今天絕不是向命運低頭或放棄的辛苦日子！只要還能奔跑就全力前行，即便辛苦，也要堅定走下去！", lyrics: "沒辦法用走的，就用爬的吧!即使用爬的也要gear up", cover: "./assets/covers/ynwa.png", spotify: "https://open.spotify.com/track/3wyrhwPpV8uhMMEms4vG3X?si=43483be036e747f3", apple: "https://music.apple.com/tw/song/not-today/1596529383" },
+    { song: "Not Today", message: "今天絕不是向命運低頭或放棄的日子！只要還能奔跑就全力前行，即便辛苦，也要堅定走下去！", lyrics: "沒辦法用走的，就用爬的吧!即使用爬的也要gear up", cover: "./assets/covers/ynwa.png", spotify: "https://open.spotify.com/track/3wyrhwPpV8uhMMEms4vG3X?si=43483be036e747f3", apple: "https://music.apple.com/tw/song/not-today/1596529383" },
     { song: "Save Me", message: "感到即將墜落或無助的時候，試著伸出雙手吧。那些溫慢的雙手與治癒的旋律，一定會穩穩拉住你。", lyrics: "伸出手吧，Save me save me", cover: "./assets/covers/yf.png", spotify: "https://open.spotify.com/track/7bxGcILuAjkZzaveU28ZJS?si=8d92ee814803419d", apple: "https://music.apple.com/tw/song/save-me/1598662137" },
     { song: "I NEED U", message: "儘管生活總會讓人跌跌撞撞，但心中那份對目標與夢想的炙熱渴望，正是推動你繼續前進的最美動力。", lyrics: "為何知道會受傷，仍舊如此需要你", cover: "./assets/covers/hyyh1.png", spotify: "https://open.spotify.com/track/3wQnyXNFXNUEOBt1pb4urq?si=727be90c708d41b8", apple: "https://music.apple.com/tw/song/i-need-u/1596533075" },
     { song: "Run", message: "就算跌倒、受傷、甚至流下眼淚也無所謂。只要目光依然看著終點、朝著夢想狂奔，過程就無比璀璨。",
@@ -178,7 +178,7 @@ const btsUniverseFortunes = [
     },
 {
         song: "Tomorrow",
-        message: "覺得每天都在重複、看不到盡頭嗎？別灰心，黎明前總是最黑的。再堅持一下，明天的太陽必為你升起。",
+        message: "覺得每天都在重複、看不到盡頭嗎？這只是黎明前的黑暗，只要不放棄前進，明天的太陽必為你升起。",
         lyrics: "明天到來就會陽光普照，請不要擔心",
         cover: "./assets/covers/sla.png",
         spotify: "https://open.spotify.com/track/0JkTVcN5kilfMztDb3bKZk?si=1e444bf955b64c66", apple: "https://music.apple.com/tw/song/tomorrow/1596533506"
@@ -273,6 +273,41 @@ const btsUniverseFortunes = [
         lyrics: "當你留下腳印 轉身離開時，我會守護你 再次走向我的路",
         cover: "./assets/covers/sc.png",
         spotify: "https://open.spotify.com/track/1UHkDovEFqHzHCPyNe0BTy?si=8c47b52badeb43e4", apple: "https://music.apple.com/tw/song/scenery/1703132750"
+    },
+{
+        song: "Lost",
+        message: "雖然失去了方向，但不代表著失敗。迷路，是為了找到一條全新的道路。",
+        lyrics: "就算不停地徘徊著，我也要相信我的這條路",
+        cover: "./assets/covers/wings.png",
+        spotify: "https://open.spotify.com/track/2So2zLatKtnIP0cy3a4Fn0?si=593c08a259084f25", apple: "https://music.apple.com/tw/song/lost/1596532546"
+    },
+{
+        song: "I'm Fine",
+        message: "即使沒有那雙拯救的手，也沒關係。也能靠自己的力量站起來，把每一天都過得很好。",
+        lyrics: "即便這黑暗的漆黑動搖了我沉睡的夢，但我不會害怕",
+        cover: "./assets/covers/answer.png",
+        spotify: "https://open.spotify.com/track/7HYJqAMbKDJYRyEfUGOCBB?si=d1e6f1fd98de426e", apple: "https://music.apple.com/tw/song/im-fine/1598730975"
+    },
+{
+        song: "Good Day",
+        message: "把今天的眼淚留在今天。抬頭看看天空吧，接下來一定會遇見更好的日子。",
+        lyrics: "未來肯定會是Good Day",
+        cover: "./assets/covers/gd.png",
+        spotify: "https://open.spotify.com/track/2aTDPjGFdyBfc3lKLAAaoI?si=d4cf5982a22d4570", apple: "https://music.apple.com/tw/song/good-day/1147103014"
+    },
+{
+        song: "I'll Be There",
+        message: "當生活讓你 感到疲憊、失去笑容時，這首歌會一直守在身邊。別擔心，隨時都能在這裡找到依靠。",
+        lyrics: "I will be there forever",
+        cover: "./assets/covers/happy.png",
+        spotify: "https://open.spotify.com/track/48ZIrgOwD74LvIf3EvLTt9?si=d94ccbd56bcf4c91", apple: "https://music.apple.com/tw/song/ill-be-there/1772351429"
+    },
+{
+        song: "Standing Next to You",
+        message: "無論遇到多大的風浪與考驗，身邊那份堅定的陪伴都不會消失。抬起頭，一起並肩度過這段煎熬吧。",
+        lyrics: "Standing in the fire next to you",
+        cover: "./assets/covers/gol.png",
+        spotify: "https://open.spotify.com/track/2KslE17cAJNHTsI2MI0jb2?si=232495cffbcd4f68", apple: "https://music.apple.com/tw/song/standing-next-to-you/1709554997"
     }
 ];
 
