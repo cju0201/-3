@@ -370,31 +370,15 @@ function forceStopMusic() {
 }
 
 document.addEventListener("visibilitychange", () => {
-
     if (!bgMusic) return;
 
     if (document.hidden) {
-
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-
+        forceStopMusic();
     } else {
-
         bgMusic.muted = false;
-
-        bgMusic.play().catch(() => {});
-    }
-
-});
-
-document.addEventListener("visibilitychange", () => {
-    if (!bgMusic) return;
-
-    if (document.hidden) {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-    } else {
-        bgMusic.play().catch(() => {});
+        bgMusic.play().catch(err => {
+            console.log("恢復播放失敗：", err);
+        });
     }
 });
 
