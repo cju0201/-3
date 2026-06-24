@@ -345,11 +345,22 @@ const historyToggle = document.getElementById('history-toggle');
 const historyPanel = document.getElementById('history-panel');
 const historyListEl = document.getElementById('history-list');
 const historyCountEl = document.getElementById('history-count');
+const armyWallForm = document.getElementById('army-wall-form');
+const armyMessageInput = document.getElementById('army-message-input');
+const armyMessageListEl = document.getElementById('army-message-list');
+const armyMessageCountEl = document.getElementById('army-message-count');
+const armyMessageLimitEl = document.getElementById('army-message-limit');
+const armyWallEmptyEl = document.getElementById('army-wall-empty');
+const armyWallClearBtn = document.getElementById('army-wall-clear');
 const DEFAULT_VOLUME = 0.5;
 const START_BUTTON_LABEL = startBtn?.innerText || '開啟防彈宇宙';
 const FORTUNE_QUEUE_KEY = 'btsUniverseFortuneQueue';
 const FORTUNE_HISTORY_KEY = 'btsUniverseFortuneHistory';
+const ARMY_WALL_KEY = 'btsArmyMessageWall';
+const ARMY_BOMB_AVATAR = './assets/army-bomb.svg';
 const MAX_HISTORY_ITEMS = 10;
+const MAX_ARMY_MESSAGES = 80;
+const ARMY_MESSAGE_LIMIT = 180;
 const PRELOAD_TIMEOUT_MS = 7000;
 const BUCKET_IMAGE_URL = 'https://zany-harlequin-wggywxadhw.edgeone.app/9.png';
 const CARD_BACKGROUND_URL = './assets/bts.jpg';
@@ -359,46 +370,27 @@ initMusicSettings();
 initVisitorCount();
 initFortuneQueue();
 initFortuneHistory();
+initArmyWall();
 preloadPromise = preloadUniverseAssets();
 
 function forceStopMusic() {
-    if (!bgMusic) return;
+    const audio = document.getElementById('bg-music');
+    if (!audio) return;
 
-    bgMusic.pause();
-    bgMusic.currentTime = 0;
+    audio.pause();
+    audio.currentTime = 0;
+    audio.muted = true;
+    audio.src = audio.src;
 }
 
-function handleMusicVisibility() {
-    if (!bgMusic) return;
+['visibilitychange', 'pagehide', 'blur', 'freeze'].forEach(evt => {
+    window.addEventListener(evt, forceStopMusic);
+    document.addEventListener(evt, forceStopMusic);
+});
 
-    if (document.hidden) {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-        return;
-    }
-
-    bgMusic.muted = false;
-
-    // iOS 安全播放模式
-    const tryPlay = () => {
-        const p = bgMusic.play();
-        if (p !== undefined) {
-            p.catch(() => {
-                // iOS 如果失敗，等下一次 user interaction
-                console.log("iOS play blocked, waiting gesture");
-            });
-        }
-    };
-
-    // 確保 ready
-    if (bgMusic.readyState >= 2) {
-        tryPlay();
-    } else {
-        bgMusic.addEventListener("canplay", tryPlay, { once: true });
-    }
-}
-
-document.addEventListener("visibilitychange", handleMusicVisibility);
+setInterval(() => {
+    if (document.hidden) forceStopMusic();
+}, 1000);
 
 // 點擊開始
 if (startBtn) {
@@ -703,6 +695,130 @@ function renderFortuneHistory() {
             </div>
         </article>
     `).join('');
+}
+
+function initArmyWall() {
+    renderArmyWall();
+    updateArmyMessageLimit();
+
+    if (armyMessageInput) {
+        armyMessageInput.addEventListener('input', updateArmyMessageLimit);
+    }
+
+    if (armyWallForm) {
+        armyWallForm.addEventListener('submit', event => {
+            event.preventDefault();
+            addArmyMessage();
+        });
+    }
+
+    document.querySelectorAll('.message-prompts button[data-prompt]').forEach(button => {
+        button.addEventListener('click', () => {
+            if (!armyMessageInput) return;
+            armyMessageInput.value = button.dataset.prompt || '';
+            armyMessageInput.focus();
+            updateArmyMessageLimit();
+        });
+    });
+
+    if (armyWallClearBtn) {
+        armyWallClearBtn.addEventListener('click', () => {
+            if (!readArmyMessages().length) return;
+            const shouldClear = confirm('要清空目前瀏覽器裡的 ARMY 留言嗎？');
+            if (!shouldClear) return;
+            saveArmyMessages([]);
+            renderArmyWall();
+        });
+    }
+}
+
+function addArmyMessage() {
+    if (!armyMessageInput) return;
+
+    const text = armyMessageInput.value.trim();
+    if (!text) {
+        armyMessageInput.focus();
+        return;
+    }
+
+    const messages = readArmyMessages();
+    const nextNumber = messages.reduce((max, item) => Math.max(max, Number(item.number) || 0), 0) + 1;
+    const message = {
+        number: nextNumber,
+        text: text.slice(0, ARMY_MESSAGE_LIMIT),
+        createdAt: Date.now()
+    };
+
+    messages.unshift(message);
+    saveArmyMessages(messages.slice(0, MAX_ARMY_MESSAGES));
+    armyWallForm?.reset();
+    updateArmyMessageLimit();
+    renderArmyWall();
+}
+
+function readArmyMessages() {
+    try {
+        const parsed = JSON.parse(localStorage.getItem(ARMY_WALL_KEY) || '[]');
+        return Array.isArray(parsed)
+            ? parsed
+                .filter(item => item && typeof item.text === 'string' && item.text.trim())
+                .map((item, index) => ({
+                    number: Number.isInteger(item.number) && item.number > 0 ? item.number : index + 1,
+                    text: item.text.trim().slice(0, ARMY_MESSAGE_LIMIT),
+                    createdAt: Number(item.createdAt) || Date.now()
+                }))
+                .slice(0, MAX_ARMY_MESSAGES)
+            : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveArmyMessages(messages) {
+    try {
+        localStorage.setItem(ARMY_WALL_KEY, JSON.stringify(messages));
+    } catch (error) {
+        alert('留言暫時無法儲存，可能是瀏覽器儲存空間已滿。');
+    }
+}
+
+function renderArmyWall() {
+    const messages = readArmyMessages();
+    if (armyMessageCountEl) armyMessageCountEl.innerText = String(messages.length);
+    if (armyWallEmptyEl) armyWallEmptyEl.hidden = messages.length > 0;
+    if (!armyMessageListEl) return;
+
+    armyMessageListEl.innerHTML = messages.map(message => `
+        <article class="army-message-card">
+            <img class="army-message-avatar" src="${ARMY_BOMB_AVATAR}" alt="阿米棒頭像" loading="lazy">
+            <div>
+                <div class="army-message-meta">
+                    <span class="army-message-name">阿米${message.number}號</span>
+                    <time class="army-message-time" datetime="${new Date(message.createdAt).toISOString()}">${formatArmyMessageTime(message.createdAt)}</time>
+                </div>
+                <p class="army-message-text">${escapeHtml(message.text)}</p>
+            </div>
+        </article>
+    `).join('');
+}
+
+function updateArmyMessageLimit() {
+    if (!armyMessageLimitEl) return;
+    const length = armyMessageInput?.value.length || 0;
+    armyMessageLimitEl.innerText = `${length}/${ARMY_MESSAGE_LIMIT}`;
+}
+
+function formatArmyMessageTime(timestamp) {
+    try {
+        return new Intl.DateTimeFormat('zh-TW', {
+            month: 'numeric',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        }).format(new Date(timestamp));
+    } catch (error) {
+        return '剛剛';
+    }
 }
 
 function preloadImage(src, timeoutMs = 5000) {
